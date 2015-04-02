@@ -120,9 +120,41 @@ int bst_search(bst *my_tree, int data) {
  * Return 1 for sucessful insert, 0 for failure.
  */
 int bst_insert_recursive(struct bstnode_s *node, int data) {
-	// FIXME
-}
 
+	int ret_val;
+	struct bstnode_s *new_node;
+	new_node=NULL;
+
+	if(data==node->data){
+		ret_val=0; // fail. must be a unique value
+	} else {
+		
+		if(data	< node->data){
+			if(node->left==NULL){
+				node->left=new_node;
+				new_node->data=data;
+				new_node->left=NULL;
+				new_node->right=NULL;
+				ret_val=1; // insert sucessful
+			} else {
+				ret_val=bst_insert_recursive(node->left, data);
+			}
+		} else {
+			if(node->right==NULL){
+				node->right=new_node;
+				new_node->data=data;
+				new_node->left=NULL;
+				new_node->right=NULL;
+				ret_val=1;
+			} else {
+				ret_val=bst_insert_recursive(node->right, data);
+			}
+
+		}
+
+	}
+	return ret_val;
+}
 
 /*
  ******************************************************************************
