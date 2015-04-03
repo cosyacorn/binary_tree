@@ -92,8 +92,29 @@ int bst_size(bst *my_tree) {
  * Return 1 for sucessful search, 0 for failure.
  */
 int bst_search_recursive(struct bstnode_s *node, int data) {
-	// FIXME
-}
+	
+	int val;
+	// bingo! found that value :)
+	if(node->data == data){
+		val = 1;
+	} else {
+		if(data < node->data){
+			if(node->left != NULL){
+				val = bst_search_recursive(node->left, data);
+			} else {
+				val = 0;
+			}
+		} else {
+			if(node->right != NULL){
+				val = bst_search_recursive(node->right, data);
+			} else {
+				val = 0;
+			}
+		}
+
+	}
+	return val;
+}   
 
 
 /*
@@ -131,16 +152,18 @@ int bst_insert_recursive(struct bstnode_s *node, int data) {
 		
 		if(data	< node->data){
 			if(node->left==NULL){
+				new_node=(struct bstnode_s *)malloc(sizeof(struct bstnode_s));
 				node->left=new_node;
-				new_node->data=data;
 				new_node->left=NULL;
 				new_node->right=NULL;
+				new_node->data=data;
 				ret_val=1; // insert sucessful
 			} else {
 				ret_val=bst_insert_recursive(node->left, data);
 			}
 		} else {
 			if(node->right==NULL){
+				new_node=(struct bstnode_s *)malloc(sizeof(struct bstnode_s));
 				node->right=new_node;
 				new_node->data=data;
 				new_node->left=NULL;
