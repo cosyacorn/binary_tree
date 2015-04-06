@@ -329,12 +329,80 @@ void bst_display(bst *my_tree) {
 	str = (char *) malloc(bst_size(my_tree) * 2 * 4 * sizeof(char));
 
 	bst_inorder_tostring(my_tree, str);
-
+	
 	printf("BST contains: %s\n", str);
 
 	free(str);
 }
 
+/*****************/
+/* FIND MIN FUNC */
+/*****************/
+
+/* Returns min value */
+
+int bst_find_min(struct bstnode_s *my_tree){
+
+	int min;
+
+	while(my_tree->left !=NULL){
+		my_tree=my_tree->left;
+	}
+	min=my_tree->data;
+	return min;
+}
+
+
+/*****************/
+/* FIND MAX FUNC */
+/*****************/
+
+/* Returns max value */
+
+int bst_find_max(struct bstnode_s *my_tree){
+
+	int max;
+	
+
+	while(my_tree->right !=NULL){
+		my_tree=my_tree->right;
+	}
+	max=my_tree->data;
+	return max;
+}
+
+/********************/
+/* REMOVE NODE FUNC */
+/********************/
+
+/* Returns 1 for success, 0 for failure*/
+
+int bst_remove(struct bstnode_s *my_tree, int data){
+
+	int val;
+	
+	if(my_tree==NULL){
+		return 0;
+	} else {
+		if(my_tree->data < data){
+			val = bst_remove(my_tree->left, data);
+		} else if(my_tree->data > data){
+			val = bst_remove(my_tree->right, data);
+		} else if(my_tree->data == data){
+			my_tree->data=bst_find_min(my_tree->right);
+			free(my_tree);
+			val=1;
+			return val;
+		} else {
+			printf("eh what? val to be removed not found\n");
+			val=0;
+			return val;
+		}
+	}
+
+	return val;
+
+}
 
 /*
  * vim:ts=4:sw=4

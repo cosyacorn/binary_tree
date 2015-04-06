@@ -22,7 +22,7 @@ bst.o:           bst.h
 # phony target to get around problem of having a file called 'clean'
 .PHONY: clean
 clean:
-	$(RM) $(objects) $(target)
+	$(RM) $(objects) $(target) output.txt q4.png *~
 
 test: $(target)
 	./$(target) -n 1000
@@ -30,3 +30,5 @@ test: $(target)
 unit_tests: $(target).o
 	make -C unit_tests test
 
+graph: output.txt q4.gp
+	gnuplot q4.gp

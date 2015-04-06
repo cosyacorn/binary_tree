@@ -76,6 +76,10 @@ int main(int argc, char *argv[]) {
 
 		bst_insert(my_tree, k);
 	}
+	
+
+	/* disply tree */
+	//bst_display(my_tree);
 
 	/* tidy up */
 	bst_destroy(my_tree);
@@ -83,6 +87,8 @@ int main(int argc, char *argv[]) {
 	/* stop the clock */
 	gettimeofday(&end, NULL);
 	elapsed = ((end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec)) / 1000;	// milliseconds
+
+	
 
 	/* printf, start... more below */
 	printf("%d RANDOM %ld ", n, elapsed);
@@ -103,6 +109,12 @@ int main(int argc, char *argv[]) {
 	for (i=0; i<n; i++) {
 		bst_insert(my_tree, i);
 	}
+	//bst_insert(my_tree, -1);
+	/* display tree */
+	//bst_display(my_tree);
+	//int val;
+	//val=bst_remove(my_tree->root, 100);
+	//printf("min: %d\n", bst_find_min(my_tree->root));
 
 	/* tidy up */
 	bst_destroy(my_tree);
@@ -110,6 +122,8 @@ int main(int argc, char *argv[]) {
 	/* stop the clock */
 	gettimeofday(&end, NULL);
 	elapsed = ((end.tv_sec - start.tv_sec) * 1000000 + (end.tv_usec - start.tv_usec)) / 1000;	// milliseconds
+
+	
 
 	/* printf, continued */
 	printf("LINEAR %ld\n", elapsed);

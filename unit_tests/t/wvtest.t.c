@@ -2,12 +2,90 @@
 #include "wvtest.h"
 
 /* EDIT HERE: add your code include(s) */
+/* My additional function declarations are at the end of the bst.h file*/
 #include "../bst.h"
 
 
 /* EDIT HERE: write your tests */
 #define N_TESTS 10000
 #define SEED 97
+
+/*****************/
+/* FIND MIN TEST */
+/*****************/
+
+WVTEST_MAIN("binary search tree tests - FIND MIN")
+{
+	/* init the hash table */
+	bst *my_tree = NULL;
+	my_tree = bst_create();
+
+	bst_insert(my_tree, 7);
+	bst_insert(my_tree, 2);
+	bst_insert(my_tree, 11);
+	bst_insert(my_tree, 9);
+	bst_insert(my_tree, 1);
+	bst_insert(my_tree, 53);
+
+	WVPASSEQ(bst_find_min(my_tree->root), 1);
+	WVFAIL(bst_find_min(my_tree->root) == 11);
+
+	/* tidy up */
+	bst_destroy(my_tree);
+}
+
+
+/*****************/
+/* FIND MAX TEST */
+/*****************/
+
+WVTEST_MAIN("binary search tree tests - FIND MAX")
+{
+	/* init the hash table */
+	bst *my_tree = NULL;
+	my_tree = bst_create();
+
+	bst_insert(my_tree, 7);
+	bst_insert(my_tree, 2);
+	bst_insert(my_tree, 11);
+	bst_insert(my_tree, 9);
+	bst_insert(my_tree, 1);
+	bst_insert(my_tree, 53);
+
+	WVPASSEQ(bst_find_max(my_tree->root), 53);
+	WVFAIL(bst_find_max(my_tree->root) == 11);
+
+	/* tidy up */
+	bst_destroy(my_tree);
+}
+
+
+
+/*****************/
+/* BST REMOVE TEST */
+/*****************/
+
+/* WVTEST_MAIN("binary search tree tests - REMOVE NODE")
+{
+	// init the hash table 
+	int val;
+	bst *my_tree = NULL;
+	my_tree = bst_create();
+
+	bst_insert(my_tree, 7);
+	bst_insert(my_tree, 2);
+	bst_insert(my_tree, 11);
+	bst_insert(my_tree, 9);
+	bst_insert(my_tree, 1);
+	bst_insert(my_tree, 53);
+	
+	val=bst_remove(my_tree, 53);
+
+	WVFAIL(bst_search(my_tree, 53));
+
+	// tidy up 
+	bst_destroy(my_tree);
+}*/
 
 
 WVTEST_MAIN("binary search tree tests - performance of search after randomly ordered insert")

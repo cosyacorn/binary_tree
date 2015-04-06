@@ -30,6 +30,11 @@ void bst_display(bst *my_tree);
 void bst_inorder_tostring(bst *my_tree, char *str);
 void bst_preorder_tostring(bst *my_tree, char *str);
 
+/* declare my remove, find min & max functions */
+int bst_find_min(struct bstnode_s *my_tree);
+int bst_find_max(struct bstnode_s *my_tree);
+int bst_remove(struct bstnode_s *my_tree, int data);
+
 #endif
 
 /*
