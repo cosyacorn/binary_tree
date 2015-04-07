@@ -1,0 +1,17 @@
+Shane Harding - 10309405
+
+Q1: My insert function works by finding the appropriate place for a value to be entered in the tree and simple adding a new node there. The corresponding test passes
+
+Q2: The search function just looks for the required value by following the rules of the binary tree. It just compares the values of each entry and then traverses the tree accordingly. The corresponding test also passes
+
+Q3: The shell script q3.sh runs the code for various different tree size and writes the data to output.txt.
+
+Q4: The make graph command uses the data generated in the last question and the gnuplot commands in the q4.gp file to draw the graph.
+
+Q5: From the graph it is immediately obvious that randomly inserting values is much better than linearly inserting them. When it comes to accessing the stored data if we place entries that we know will need to be accessed more nearer the root then this can save a lot of time in the future. However this requires prior knowledge of our data.
+
+Q6: The find min function simply keeps moving to the left branches until it can't anymore to find the smallest value. The test I wrote simply checks if this is correct.
+
+Q7: This is the same as above except that it goes to the right branches.
+
+Q8: I wrote a remove function but am unsure if it works and couldn't get the test to work. The test has been commented out so that it runs for the rest.
